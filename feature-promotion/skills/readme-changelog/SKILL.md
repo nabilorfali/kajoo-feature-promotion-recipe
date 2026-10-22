@@ -47,7 +47,7 @@ It checks the header, refuses ticket keys, placeholders and future promises, str
 
 5. A 201 answer includes `data.uri`. Write the entry into `reports/published.json` immediately, before anything else.
 6. Read it back with `GET https://api.readme.com/v2/changelogs/<slug>`. Save `data` as `publish/<entry>/hidden-readback.json`. Check that `privacy.view` is `anyone_with_link`, `title` and `type` match the draft, and `content.body` equals the draft body exactly. Any difference is a failure: report it and stop.
-7. Give the user the link to look at: `https://docs.kajoo.ai/changelog/<slug>`. A hidden entry opens for anyone who has that link.
+7. In a normal message, before the gate 4 question, give the user the link to look at: `https://docs.kajoo.ai/changelog/<slug>`. A hidden entry opens for anyone who has that link.
 
 ## Make public (gate 4)
 

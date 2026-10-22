@@ -54,6 +54,8 @@ Before the gate 2 question, write the draft out in a normal chat message. The us
 
 Follow `feature-promotion/references/pipeline/publish.md` and `readme-changelog`. Run the gate check immediately before each external call. If a check fails, say why in plain words and ask again; never work around it.
 
+Before the gate 4 question, write a normal message with the hidden entry's link (`https://docs.kajoo.ai/changelog/<slug>`), what the read-back confirmed, and a request to open the link and check it. Then ask the question.
+
 ## Finish
 
 When every entry is done or the user stops, write `reports/run-summary.md`, update the artifact with each entry's link and visibility, and tell the user: each entry's public link or hidden status, what was not published and why, and the writers' open questions. Mark the epic done only when every entry is public or the user chose to stop.
