@@ -11,13 +11,13 @@ This workspace skill is mounted at `/mnt/skills/workspace/demo-recording/`. Read
 
 ## What a demo is
 
-One clip per filmable entry, 30 to 60 seconds and never more than 90, with no sound. It opens on the result within 3 seconds, shows a title, one short caption per step and a visible cursor. It comes in two files, `demo-16x9.mp4` (1920×1080) and `demo-4x5.mp4` (1080×1350), plus `cover.png`. It records the real app on stage, signed in to the demo organization, which holds only made-up data.
+One clip per filmable entry, 30 to 60 seconds and never more than 90, with no sound. It opens on the result within 3 seconds, shows a title, one short caption per step and a visible cursor. It comes in two files, `demo-16x9.mp4` (1920×1080) and `demo-4x5.mp4` (1080×1350), plus `cover.png`. It records the real app on stage in the demo workspace, whose project holds only made-up data. The run's `context.json` names its project as `demoUrl`.
 
 ## Shot list (orchestrator)
 
 `drafts/<entry>/demo/shot-list.json`, shaped by `assets/shot-list.schema.json`:
 
-- `environment` is `https://stage2.kajoo.ai`.
+- `environment` is the run's `demoUrl` from `context.json`.
 - 3 to 8 steps. Each has `shows` (what is on screen, plain words) and `caption` (at most 8 words).
 - Steps come from the story's acceptance criteria and the approved changelog text only. Captions follow `channel-copy`: facts only, no ticket keys, no promises, no internal names.
 - The first step already shows the feature or its starting point; never a sign-in page or a settings tour.
@@ -35,10 +35,10 @@ They sign in, close the window, and attach `kajoo-demo.json`. It lands read-only
 
 ## Recording (demo recorder)
 
-1. Plan with `probe`. It opens one page signed in and saves a screenshot and the page's accessibility tree, so you can pick targets by role and name. Start from `/` to find the demo workspace and project.
+1. Plan with `probe`. It opens one page signed in and saves a screenshot and the page's accessibility tree, so you can pick targets by role and name. Start from the run's `demoUrl`, and keep every step inside that workspace.
 
    ```
-   node /mnt/skills/workspace/demo-recording/scripts/record.cjs probe --sign-in <file> --url https://stage2.kajoo.ai/ --out <demo-dir>/probe
+   node /mnt/skills/workspace/demo-recording/scripts/record.cjs probe --sign-in <file> --url <demoUrl> --out <demo-dir>/probe
    ```
 
 2. Write `drafts/<entry>/demo/steps.json` like `assets/steps.example.json`. Captions must be the approved shot list's captions, in the same order. Actions: `goto` (a path on the app), `click`, `hover`, `type` (`text`, optional `target`), `press`, `waitFor`, `pause`, `scroll`. Targets use exactly one of `role` (with `name`), `label`, `placeholder`, `text`, `testId` or `selector`; prefer `role` and `name`. Mark waits for an AI answer or a slow load with `"cut": true` so they are removed from the clip. A step's `hold` (default 1600 ms) keeps its caption on screen.
@@ -63,7 +63,7 @@ Look at every image in `frames/` with `read` before handing over. Fail and recor
 
 - a blank, white or loading frame, or a spinner where the result should be;
 - a caption that is cut off, overlaps the feature, or does not match what is on screen;
-- anything outside the demo organization: a real person's name or email, a customer, a token or an error;
+- anything outside the demo workspace: another person's name or email, a customer, a token or an error (the signed-in account's own name and avatar are fine);
 - the clip is shorter than 15 or longer than 90 seconds (`report.json`).
 
 Two failed recordings of one entry: stop and report what went wrong. Never hand over a clip that failed a check.

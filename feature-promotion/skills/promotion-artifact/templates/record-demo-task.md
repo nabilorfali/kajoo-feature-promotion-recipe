@@ -20,7 +20,7 @@ Workflow task: `demo.record.<entry>`. Owner: demo-recorder. Depends on `demo.sho
 
 1. `record.cjs record` and `encode.mjs` both report ok.
 2. Every frame in `frames/` was inspected and passes the checks in `demo-recording`.
-3. The clip is 15 to 90 seconds long and shows only the demo organization.
+3. The clip is 15 to 90 seconds long and shows only the demo workspace named by `demoUrl`.
 4. The task result lists both clips, the cover and `report.json` as evidence with their hashes, and validates with `validate-task-result.mjs`.
 
 ## Lifecycle and handoff

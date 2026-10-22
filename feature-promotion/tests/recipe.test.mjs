@@ -63,6 +63,7 @@ test('the run context names the Jira site, and every worker task that reads Jira
   const context = JSON.parse(read('skills/feature-promotion/assets/profiles/changelog/context.json'));
   assert.ok(schema.required.includes('jiraSite'));
   assert.match(context.jiraSite, new RegExp(schema.properties.jiraSite.pattern));
+  assert.match(context.demoUrl, new RegExp(schema.properties.demoUrl.pattern));
   for (const file of readdirSync(resolve(root, 'skills/promotion-artifact/templates'))) {
     const content = read(`skills/promotion-artifact/templates/${file}`);
     const owner = content.match(/Owner: ([a-z-]+)\./)[1];

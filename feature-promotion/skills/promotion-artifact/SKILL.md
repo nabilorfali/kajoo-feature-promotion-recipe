@@ -43,7 +43,7 @@ This step only reads. For a request that names a run or resumes one, list the pr
 Check the tools the whole step needs before the first write: `create-artifact`, `update-artifact`, `create-epic`, `bulk-create-tasks` or `create-task`, `update-task`. If one is missing, say which and change nothing.
 
 1. Create the artifact with empty `entries` and the run folder path. Use the returned id; never invent ids.
-2. Initialize the run folder as [state](../feature-promotion/references/state.md) shows, and write `context.json` with the artifact id. Copy `jiraProject` and `jiraSite` from `feature-promotion/assets/profiles/changelog/context.json`.
+2. Initialize the run folder as [state](../feature-promotion/references/state.md) shows, and write `context.json` with the artifact id. Copy `jiraProject`, `jiraSite` and `demoUrl` from `feature-promotion/assets/profiles/changelog/context.json`.
 3. Create the epic `Promotion <runId>` and record its id in the artifact.
 4. Create the two Collect tasks as `todo`, linked to the epic, with ranks 1000 and 2000 and the second depending on the first: `collect.stories` from [collect stories](templates/collect-stories-task.md), assigned to the researcher, and `collect.recommend` from [recommend](templates/recommend-task.md), assigned to the orchestrator.
 5. Write `reports/kajoo-workflow-bindings.json` and read back the tasks.

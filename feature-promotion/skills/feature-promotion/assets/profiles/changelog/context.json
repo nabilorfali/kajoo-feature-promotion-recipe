@@ -5,6 +5,7 @@
   "mode": "shipped",
   "jiraProject": "KAJOO",
   "jiraSite": "techguilds.atlassian.net",
+  "demoUrl": "https://stage2.kajoo.ai/workspaces/6ada900a171ce18d1f4d8d60/projects/6ada901f171ce18d1f4d8d79",
   "requestedBy": "Name of the person who asked",
   "startedAt": "2026-10-21T09:30:00Z",
   "connectors": { "jira": "jira", "readme": "readme" }

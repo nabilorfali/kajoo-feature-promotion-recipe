@@ -3,7 +3,7 @@
 The demo phase comes after review and before publish. It runs per entry once that entry's text is approved; entries stay independent. Follow `demo-recording` for the shot list rules, the sign-in, the scripts and the checks.
 
 1. Decide whether the entry can be filmed. If not, set `demo.shotlist.<entry>` and `demo.record.<entry>` to skipped with a one-line reason, and say it in the chat. A `grouped` entry is usually not filmed.
-2. Write `drafts/<entry>/demo/shot-list.json`. In a normal message show the title, the stage demo organization, the target length, both shapes, and each step as "what it shows: caption". In the same message ask for a saved sign-in of the demo account with the command from `demo-recording`, unless one was attached in this chat in the last 3 days.
+2. Write `drafts/<entry>/demo/shot-list.json`. In a normal message show the title, the stage demo project (`demoUrl` in `context.json`), the target length, both shapes, and each step as "what it shows: caption". In the same message ask for a saved sign-in of the demo account with the command from `demo-recording`, unless one was attached in this chat in the last 3 days.
 3. Demo shot list gate: "Record this shot list?" with "Record it", "Change it" and "Skip the video". "Change it" applies the person's words, shows the list again and asks again. "Skip the video" skips both demo tasks.
 4. Once the shot list is approved and the sign-in is attached, put the sign-in path into the record task, run the gate check, and dispatch the demo recorder with `Work on <kajoo-task taskId="..." name="..." />` only.
 5. Validate the returned task result and read `report.json`. A blocked task with exit code 3 needs a new saved sign-in: ask for it, then send the task back.
