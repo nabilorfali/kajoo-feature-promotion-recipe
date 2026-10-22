@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "baseUrl": "https://stage2.kajoo.ai",
+  "title": "See which model Auto picked",
+  "steps": [
+    {
+      "caption": "Auto picks the model for you",
+      "actions": [
+        { "goto": "/workspaces/<workspaceId>/projects/<projectId>?chatId=<chatId>" },
+        { "waitFor": { "role": "textbox", "name": "Type your message" } },
+        { "hover": { "text": "Auto" } }
+      ]
+    },
+    {
+      "caption": "Ask anything",
+      "actions": [
+        { "type": { "target": { "role": "textbox", "name": "Type your message" }, "text": "Summarize this project in two lines" } },
+        { "press": "Enter" },
+        { "waitFor": { "text": "Used", "timeout": 60000 }, "cut": true }
+      ],
+      "hold": 2000
+    },
+    {
+      "caption": "See which model Auto chose",
+      "actions": [
+        { "hover": { "role": "button", "name": "Model" } },
+        { "pause": 2500 }
+      ]
+    }
+  ]
+}

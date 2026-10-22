@@ -53,7 +53,7 @@ Check the tools the whole step needs before the first write: `create-artifact`, 
 | Trigger | File to read |
 | --- | --- |
 | Creating the Collect tasks | [collect stories](templates/collect-stories-task.md), [recommend](templates/recommend-task.md) |
-| Creating tasks after the shortlist is approved | [draft](templates/draft-changelog-task.md), [review](templates/review-changelog-task.md), [create hidden](templates/publish-hidden-task.md), [make public](templates/publish-public-task.md) |
+| Creating tasks after the shortlist is approved | [draft](templates/draft-changelog-task.md), [review](templates/review-changelog-task.md), [plan demo](templates/demo-shotlist-task.md), [record demo](templates/record-demo-task.md), [create hidden](templates/publish-hidden-task.md), [make public](templates/publish-public-task.md) |
 | A worker starting its task | the one template its task names |
 
 Fill a template at its execution step with verified values. Keep the template's sections and its final Technical report section. Omit unknown optional facts rather than inventing them.

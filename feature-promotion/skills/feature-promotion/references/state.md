@@ -15,6 +15,7 @@ Each run has its own folder. The promotion artifact's `content.stateFileDir` nam
     changelog.md            the exact text that would be published
     review.json             the reviewer's verdict
     readme-create.json      the exact request body for the hidden entry
+    demo/                   shot list, steps, both clips, cover, frames and report (see demo-recording)
   publish/<entry>/
     hidden-readback.json    what ReadMe returned after the hidden create
     public-readback.json    what ReadMe returned after the public step

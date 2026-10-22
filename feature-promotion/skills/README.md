@@ -1,12 +1,13 @@
 # Skill-first feature promotion
 
-Four agents turn shipped Jira work into docs.kajoo.ai changelog entries through four approval gates, using native workspace tools, focused skills and small tested scripts. The recipe supplies procedures and local contracts; each real run still depends on the live Jira and ReadMe connectors.
+Five agents turn shipped Jira work into docs.kajoo.ai changelog entries and short demo clips through approval gates, using native workspace tools, focused skills and small tested scripts. The recipe supplies procedures and local contracts; each real run still depends on the live Jira and ReadMe connectors.
 
 ## Responsibility map
 
 - `feature-promotion`: phases, gates, run state, decisions, task results and the changelog profile.
 - `promotion-artifact`: the run's Kajoo artifact, its run folder, the Collect phase and every task template.
 - `channel-copy`: the rules every customer-facing sentence follows, and the changelog format.
+- `demo-recording`: the shot list rules, the saved sign-in, the recording and encoding scripts, and the frame checks for demo clips.
 - `readme-changelog`: the read check, hidden create, read-back and public step on ReadMe, and the request builder.
 - `workflow` and `managing-kajoo-tasks`: shared with Sitecore Migration v3, bundled here as recipe skills and staged on demand at `/mnt/skills/workspace/<name>`.
 
@@ -25,9 +26,10 @@ Four agents turn shipped Jira work into docs.kajoo.ai changelog entries through 
 - The reviewer checks drafts against the Jira tickets; a pass is advice, not approval.
 - `build-readme-request.mjs` refuses ticket keys, placeholders and future promises; it cannot judge tone or truth.
 - The API read-back proves what ReadMe stored. Only the user can confirm the rendered page.
+- The recorder's frame checks catch blank frames and stray data; only the user can judge whether a clip tells the story well.
 
 Run authoring checks from this recipe folder with:
 
 ```
-node --test tests/*.test.mjs skills/feature-promotion/tests/*.test.mjs skills/readme-changelog/tests/*.test.mjs skills/workflow/scripts/validate.test.mjs
+node --test tests/*.test.mjs skills/feature-promotion/tests/*.test.mjs skills/readme-changelog/tests/*.test.mjs skills/demo-recording/tests/*.test.mjs skills/workflow/scripts/validate.test.mjs
 ```

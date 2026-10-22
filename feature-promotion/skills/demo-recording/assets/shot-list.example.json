@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "entry": "KAJOO-5292",
+  "title": "See which model Auto picked",
+  "environment": "https://stage2.kajoo.ai",
+  "targetSeconds": 40,
+  "steps": [
+    { "shows": "A chat in the demo project with the model set to Auto", "caption": "Auto picks the model for you" },
+    { "shows": "Typing a question and sending it", "caption": "Ask anything" },
+    { "shows": "Hovering the model selector after the answer arrives", "caption": "See which model Auto chose" }
+  ]
+}

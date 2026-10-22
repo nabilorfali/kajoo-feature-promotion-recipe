@@ -57,7 +57,7 @@ export function entryIds(shortlist) {
 }
 
 /**
- * Returns a new workflow with draft, review and publish phases for every approved entry.
+ * Returns a new workflow with draft, review, demo and publish phases for every approved entry.
  * The input workflow is never changed. Each entry gets its own tasks so entries run in parallel.
  */
 export function materializeWorkflow(workflow, shortlist) {
@@ -67,8 +67,8 @@ export function materializeWorkflow(workflow, shortlist) {
   const existing = workflow.phases.flatMap(phase => phase.tasks);
   const recommend = existing.find(task => task.id === anchor);
   if (!recommend || recommend.status !== 'done') throw new Error(`${anchor} must be done before the shortlist is turned into work.`);
-  if (workflow.phases.some(phase => ['draft', 'review', 'publish'].includes(phase.id))) {
-    throw new Error('Draft, review or publish phases already exist. Reconcile them instead of materializing again.');
+  if (workflow.phases.some(phase => ['draft', 'review', 'demo', 'publish'].includes(phase.id))) {
+    throw new Error('Draft, review, demo or publish phases already exist. Reconcile them instead of materializing again.');
   }
   const ids = entryIds(shortlist);
   const task = (id, title, agent, dependsOn) => ({ id, title, status: 'pending', dependsOn, agent });
@@ -76,6 +76,14 @@ export function materializeWorkflow(workflow, shortlist) {
   next.phases.push(
     { id: 'draft', title: 'Draft', tasks: ids.map(id => task(`draft.changelog.${id}`, `Draft changelog entry ${id}`, 'writer', [anchor])) },
     { id: 'review', title: 'Review', tasks: ids.map(id => task(`review.changelog.${id}`, `Review changelog draft ${id}`, 'reviewer', [`draft.changelog.${id}`])) },
+    {
+      id: 'demo',
+      title: 'Demo',
+      tasks: ids.flatMap(id => [
+        task(`demo.shotlist.${id}`, `Plan demo clip ${id}`, 'orchestrator', [`review.changelog.${id}`]),
+        task(`demo.record.${id}`, `Record demo clip ${id}`, 'demo-recorder', [`demo.shotlist.${id}`]),
+      ]),
+    },
     {
       id: 'publish',
       title: 'Publish',

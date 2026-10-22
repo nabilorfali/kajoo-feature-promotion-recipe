@@ -1,7 +1,7 @@
 {
   "version": 1,
   "activeByDefault": ["collect"],
-  "description": "Phases added after the shortlist approval. materialize-shortlist.mjs builds them per approved entry: one entry per headline story and one grouped entry for all supporting stories. Entries are independent and may run in parallel.",
+  "description": "Phases added after the shortlist approval. materialize-shortlist.mjs builds them per approved entry: one entry per headline story and one grouped entry for all supporting stories. Entries are independent and may run in parallel. The demo phase comes before publish; an entry without a clip has its demo tasks skipped, which lets publishing go ahead.",
   "phases": [
     {
       "id": "draft",
@@ -18,6 +18,14 @@
       "agent": "reviewer",
       "dependsOn": ["draft.changelog.<entry>"],
       "template": "promotion-artifact/templates/review-changelog-task.md"
+    },
+    {
+      "id": "demo",
+      "title": "Demo",
+      "tasks": [
+        { "taskPattern": "demo.shotlist.<entry>", "agent": "orchestrator", "dependsOn": ["review.changelog.<entry>"], "template": "promotion-artifact/templates/demo-shotlist-task.md" },
+        { "taskPattern": "demo.record.<entry>", "agent": "demo-recorder", "dependsOn": ["demo.shotlist.<entry>"], "template": "promotion-artifact/templates/record-demo-task.md" }
+      ]
     },
     {
       "id": "publish",

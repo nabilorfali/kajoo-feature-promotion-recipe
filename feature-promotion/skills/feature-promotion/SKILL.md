@@ -24,6 +24,7 @@ A run that waits more than 24 hours for an answer is closed by Kajoo. Nothing is
 | Collect | `collect.stories`, `collect.recommend` | researcher, orchestrator | [collect](references/pipeline/collect.md) |
 | Draft | `draft.changelog.<entry>` | writer | [draft and review](references/pipeline/draft-and-review.md) |
 | Review | `review.changelog.<entry>` | reviewer | [draft and review](references/pipeline/draft-and-review.md) |
+| Demo | `demo.shotlist.<entry>`, `demo.record.<entry>` | orchestrator, demo-recorder | [demo](references/pipeline/demo.md) |
 | Publish | `publish.hidden.<entry>`, `publish.public.<entry>` | orchestrator | [publish](references/pipeline/publish.md) |
 
 Collect is the only phase that exists before gate 1. The starting workflow is `assets/profiles/changelog/workflow.json`; the later phases are listed in `assets/profiles/changelog/phase-catalog.json` and created by `materialize-shortlist.mjs` only after the shortlist is approved. A coming-soon request stops after the shortlist: changelog entries are for shipped work only.
@@ -36,7 +37,7 @@ After a worker returns, validate its result with `validate-task-result.mjs`, che
 
 ## Gates
 
-Four gates, all `ask-user-input` questions answered by the user, each recorded as a decision tied to the hashes of the files it covers. See [decisions and approvals](references/decisions-and-approvals.md). Nothing is created or changed outside the run folder until `check-decisions.mjs` reports the matching decision as current and approving. An edit to a covered file makes its approval stale; ask again.
+Four publishing gates and two demo gates, all `ask-user-input` questions answered by the user, each recorded as a decision tied to the hashes of the files it covers. See [decisions and approvals](references/decisions-and-approvals.md). Nothing is created or changed outside the run folder until `check-decisions.mjs` reports the matching decision as current and approving. An edit to a covered file makes its approval stale; ask again.
 
 A phase completion is never permission to start the next gate's action. Technical success, a passing review or a clean script run is never approval.
 

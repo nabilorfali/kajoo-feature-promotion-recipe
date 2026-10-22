@@ -32,13 +32,16 @@ test('an empty or malformed shortlist is refused', () => {
   assert.throws(() => entryIds({}), /version 1/);
 });
 
-test('materializing adds draft, review and publish phases in order and stays valid', () => {
+test('materializing adds draft, review, demo and publish phases in order and stays valid', () => {
   const base = collect();
   const next = materializeWorkflow(base, shortlist(item('A-1', 'headline'), item('A-2', 'supporting')));
-  assert.deepEqual(next.phases.map(phase => phase.id), ['collect', 'draft', 'review', 'publish']);
+  assert.deepEqual(next.phases.map(phase => phase.id), ['collect', 'draft', 'review', 'demo', 'publish']);
   assert.equal(validateWorkflow(next).valid, true);
   assert.deepEqual(validateWorkflow(next).runnable, ['draft.changelog.A-1', 'draft.changelog.grouped']);
-  const publish = next.phases[3].tasks;
+  const demo = next.phases[3].tasks;
+  assert.deepEqual(demo.find(task => task.id === 'demo.shotlist.A-1').dependsOn, ['review.changelog.A-1']);
+  assert.deepEqual(demo.find(task => task.id === 'demo.record.A-1'), { id: 'demo.record.A-1', title: 'Record demo clip A-1', status: 'pending', dependsOn: ['demo.shotlist.A-1'], agent: 'demo-recorder' });
+  const publish = next.phases[4].tasks;
   assert.deepEqual(publish.find(task => task.id === 'publish.public.A-1').dependsOn, ['publish.hidden.A-1']);
   assert.deepEqual(publish.find(task => task.id === 'publish.hidden.A-1').dependsOn, ['review.changelog.A-1']);
   assert.equal(base.phases.length, 1, 'input workflow is not changed');

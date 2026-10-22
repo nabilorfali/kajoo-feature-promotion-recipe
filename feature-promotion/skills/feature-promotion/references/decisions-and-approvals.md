@@ -8,10 +8,12 @@ Keep concise keyed decisions in `decisions.json` as `{ "version": 1, "decisions"
 | --- | --- | --- | --- | --- |
 | 1 Shortlist | `workflow-plan` | `shortlist:<runId>` | `approve` | `shortlist.json` |
 | 2 Draft text | `verification` | `draft:changelog:<entry>` | `verified` | `drafts/<entry>/changelog.md`, `drafts/<entry>/review.json` |
+| Demo shot list | `workflow-plan` | `demo-shotlist:<entry>` | `approve` | `drafts/<entry>/demo/shot-list.json` |
+| Demo clip | `verification` | `demo:<entry>` | `verified` | `drafts/<entry>/demo/demo-16x9.mp4`, `drafts/<entry>/demo/demo-4x5.mp4`, `drafts/<entry>/demo/cover.png`, `drafts/<entry>/demo/steps.json` |
 | 3 Create hidden | `mutation` | `publish-hidden:changelog:<entry>` | `approve-execution` | `drafts/<entry>/changelog.md`, `drafts/<entry>/readme-create.json` |
 | 4 Make public | `mutation` | `publish-public:changelog:<entry>` | `approve-execution` | `drafts/<entry>/changelog.md`, `publish/<entry>/hidden-readback.json` |
 
-Other answers are recorded too and never approve: `needs-rework` and `pause` for a verification, `pause` for a mutation. A newer decision for the same kind and scope replaces the older one, which stays as history.
+Other answers are recorded too and never approve: `needs-rework` and `pause` for a verification, `pause` for a mutation, and `skip` for either demo gate. The two demo gates never block publishing: a skipped video lets the entry go on to gate 3. A newer decision for the same kind and scope replaces the older one, which stays as history.
 
 ## Asking
 

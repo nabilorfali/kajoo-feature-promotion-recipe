@@ -5,7 +5,7 @@ description: Use when writing or reviewing any customer-facing text for a promot
 
 # Channel copy
 
-Enabled channel in this version: **ReadMe changelog**, see [changelog](references/changelog.md). Do not draft email, LinkedIn, blog or sales copy yet. If asked, say those channels are not part of this version.
+Enabled channel in this version: **ReadMe changelog**, see [changelog](references/changelog.md). Demo clip captions (see `demo-recording`) follow the rules for every channel below. Do not draft email, LinkedIn, blog or sales copy yet. If asked, say those channels are not part of this version.
 
 ## Rules for every channel
 
