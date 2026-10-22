@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "key": { "type": "string", "pattern": "^[A-Z][A-Z0-9]*-[0-9]+$" },
+    "title": { "type": "string", "minLength": 1 },
+    "type": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "minLength": 1 },
+    "customerFacing": { "enum": ["yes", "no", "unclear"] },
+    "whatChanged": { "type": "string", "minLength": 1 },
+    "forWhom": { "type": ["string", "null"] },
+    "acceptanceCriteria": { "type": "array", "items": { "type": "string" } },
+    "live": { "enum": ["yes", "no", "unknown"] },
+    "liveEvidence": { "type": "string" },
+    "whereToFind": { "type": ["string", "null"] },
+    "notStated": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["key", "title", "type", "status", "customerFacing", "whatChanged", "forWhom", "acceptanceCriteria", "live", "liveEvidence", "whereToFind", "notStated"],
+  "additionalProperties": false
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "version": { "const": 1 },
+    "runId": { "type": "string", "minLength": 1 },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": { "type": "string", "pattern": "^[A-Z][A-Z0-9]*-[0-9]+$" },
+          "title": { "type": "string", "minLength": 1 },
+          "role": { "enum": ["headline", "supporting", "skip"] },
+          "reason": { "type": "string", "minLength": 1 },
+          "angle": { "type": "string" },
+          "live": { "enum": ["yes", "no", "unknown"] }
+        },
+        "required": ["key", "title", "role", "reason", "live"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["version", "runId", "items"],
+  "additionalProperties": false
+}

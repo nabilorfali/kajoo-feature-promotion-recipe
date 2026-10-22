@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "entry": { "type": "string", "minLength": 1 },
+    "verdict": { "enum": ["pass", "fail"] },
+    "checkedAt": { "type": "string", "minLength": 1 },
+    "sentences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string", "minLength": 1 },
+          "support": { "enum": ["supported", "not-supported", "contradicted"] },
+          "evidence": { "type": "string" }
+        },
+        "required": ["text", "support", "evidence"],
+        "additionalProperties": false
+      }
+    },
+    "findings": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["entry", "verdict", "checkedAt", "sentences", "findings", "notes"],
+  "additionalProperties": false
+}

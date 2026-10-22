@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "activeByDefault": ["collect"],
+  "description": "Phases added after the shortlist approval. materialize-shortlist.mjs builds them per approved entry: one entry per headline story and one grouped entry for all supporting stories. Entries are independent and may run in parallel.",
+  "phases": [
+    {
+      "id": "draft",
+      "title": "Draft",
+      "taskPattern": "draft.changelog.<entry>",
+      "agent": "writer",
+      "dependsOn": ["collect.recommend"],
+      "template": "promotion-artifact/templates/draft-changelog-task.md"
+    },
+    {
+      "id": "review",
+      "title": "Review",
+      "taskPattern": "review.changelog.<entry>",
+      "agent": "reviewer",
+      "dependsOn": ["draft.changelog.<entry>"],
+      "template": "promotion-artifact/templates/review-changelog-task.md"
+    },
+    {
+      "id": "publish",
+      "title": "Publish",
+      "tasks": [
+        { "taskPattern": "publish.hidden.<entry>", "agent": "orchestrator", "dependsOn": ["review.changelog.<entry>"], "template": "promotion-artifact/templates/publish-hidden-task.md" },
+        { "taskPattern": "publish.public.<entry>", "agent": "orchestrator", "dependsOn": ["publish.hidden.<entry>"], "template": "promotion-artifact/templates/publish-public-task.md" }
+      ]
+    }
+  ]
+}

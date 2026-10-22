@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "runId": "2026-10-21-release-145",
+  "target": { "kind": "release", "ref": "(Agentic) Release - 145", "fixVersionId": "16883" },
+  "mode": "shipped",
+  "jiraProject": "KAJOO",
+  "requestedBy": "Name of the person who asked",
+  "startedAt": "2026-10-21T09:30:00Z",
+  "connectors": { "jira": "jira", "readme": "readme" }
+}

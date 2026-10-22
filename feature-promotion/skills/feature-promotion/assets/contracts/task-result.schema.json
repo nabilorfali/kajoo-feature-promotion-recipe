@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "taskId": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "outcome": { "enum": ["success", "failed", "blocked", "needs-redo", "skipped"] },
+    "summary": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "observation": { "type": "string", "minLength": 1 }
+        },
+        "required": ["kind", "path", "sha256", "observation"],
+        "additionalProperties": false
+      }
+    },
+    "changedFiles": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "checkpoint": { "type": "null" },
+    "unresolved": { "type": "array", "items": { "type": "string", "minLength": 1, "pattern": "\\S" }, "uniqueItems": true }
+  },
+  "required": ["taskId", "outcome", "summary", "evidence", "changedFiles", "checkpoint", "unresolved"],
+  "additionalProperties": false
+}

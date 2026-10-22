@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "version": { "const": 1 },
+    "runId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "artifactId": { "type": "string", "pattern": "^[a-f0-9]{24}$" },
+    "target": {
+      "type": "object",
+      "properties": {
+        "kind": { "enum": ["release", "epic", "story"] },
+        "ref": { "type": "string", "minLength": 1 },
+        "fixVersionId": { "type": "string" }
+      },
+      "required": ["kind", "ref"],
+      "additionalProperties": false
+    },
+    "mode": { "enum": ["shipped", "coming-soon"] },
+    "jiraProject": { "type": "string", "minLength": 1 },
+    "requestedBy": { "type": "string", "minLength": 1 },
+    "startedAt": { "type": "string", "minLength": 1 },
+    "connectors": {
+      "type": "object",
+      "properties": { "jira": { "type": "string" }, "readme": { "type": "string" } },
+      "required": ["jira", "readme"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["version", "runId", "target", "mode", "jiraProject", "startedAt", "connectors"],
+  "additionalProperties": false
+}

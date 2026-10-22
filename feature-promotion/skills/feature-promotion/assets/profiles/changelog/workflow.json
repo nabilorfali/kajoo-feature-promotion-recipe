@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "phases": [
+    {
+      "id": "collect",
+      "title": "Collect",
+      "tasks": [
+        { "id": "collect.stories", "title": "Read the stories and their context", "status": "pending", "dependsOn": [], "agent": "researcher" },
+        { "id": "collect.recommend", "title": "Recommend what to promote", "status": "pending", "dependsOn": ["collect.stories"], "agent": "orchestrator" }
+      ]
+    }
+  ]
+}

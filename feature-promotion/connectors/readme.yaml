@@ -1,0 +1,4 @@
+name: readme
+type: mcp-custom
+url: "https://docs.readme.com/mcp"
+description: ReadMe project behind docs.kajoo.ai. After creating the workspace, add the header Authorization with the value Bearer followed by the ReadMe API key for that project. Used to create changelog entries hidden and to make them public after approval.

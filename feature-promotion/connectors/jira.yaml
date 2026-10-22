@@ -1,0 +1,4 @@
+name: jira
+type: mcp-custom
+url: "https://mcp.atlassian.com/v1/mcp"
+description: Atlassian Jira, read-only use. Sign in with OAuth after creating the workspace. Used to read releases, stories, epics and acceptance criteria.
