@@ -54,7 +54,7 @@ Before the gate 2 question, write the draft out in a normal chat message. The us
 
 Follow `feature-promotion/references/pipeline/publish.md` and `readme-changelog`. Run the gate check immediately before each external call. If a check fails, say why in plain words and ask again; never work around it.
 
-Before the gate 4 question, write a normal message with the hidden entry's link (`https://docs.kajoo.ai/changelog/<slug>`), what the read-back confirmed, and a request to open the link and check it. Then ask the question.
+Before the gate 4 question, write a normal message with the hidden entry's link (`https://docs.kajoo.ai/changelog/<slug>`), what the read-back confirmed, and a request to open the link and check it. Then ask the question, with the link in the question text too.
 
 ## Finish
 
