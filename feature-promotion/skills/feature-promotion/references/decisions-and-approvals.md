@@ -15,7 +15,7 @@ Other answers are recorded too and never approve: `needs-rework` and `pause` for
 
 ## Asking
 
-Every gate is an `ask-user-input` question, the only tool call in its turn, under 500 characters, with the details written as a normal message first. Questions always reach a person, even when a chat runs in Auto or Bypass approval. Approval of one gate never implies the next. Technical success, a passing review or a previous chat summary is never approval.
+Every gate is an `ask-user-input` question, the only tool call in its turn, under 500 characters, with the details written as a normal message first. The user sees only chat messages, never command output, file reads or task cards, so a question may refer only to what that message shows. Questions always reach a person, even when a chat runs in Auto or Bypass approval. Approval of one gate never implies the next. Technical success, a passing review or a previous chat summary is never approval.
 
 ## Recording and checking
 

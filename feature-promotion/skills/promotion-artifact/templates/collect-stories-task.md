@@ -6,7 +6,7 @@ Workflow task: `collect.stories`. Owner: researcher. Link the run's promotion ar
 
 ## Inputs
 
-- `context.json`: the target (a Jira fix version, an epic key or a story key) and the Jira project.
+- `context.json`: the target (a Jira fix version, an epic key or a story key), the Jira project, and `jiraSite`, passed as `cloudId` in every Jira call.
 
 ## Output
 

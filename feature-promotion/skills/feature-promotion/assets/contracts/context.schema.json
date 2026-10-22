@@ -17,6 +17,7 @@
     },
     "mode": { "enum": ["shipped", "coming-soon"] },
     "jiraProject": { "type": "string", "minLength": 1 },
+    "jiraSite": { "type": "string", "pattern": "^[a-z0-9-]+\\.atlassian\\.net$" },
     "requestedBy": { "type": "string", "minLength": 1 },
     "startedAt": { "type": "string", "minLength": 1 },
     "connectors": {
@@ -26,6 +27,6 @@
       "additionalProperties": false
     }
   },
-  "required": ["version", "runId", "target", "mode", "jiraProject", "startedAt", "connectors"],
+  "required": ["version", "runId", "target", "mode", "jiraProject", "jiraSite", "startedAt", "connectors"],
   "additionalProperties": false
 }

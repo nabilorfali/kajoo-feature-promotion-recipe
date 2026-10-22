@@ -33,6 +33,8 @@ You read and write facts. You do not recommend, write customer copy or touch any
 - Epic: `parent = <KEY>`.
 - Single story: `key = <KEY>`.
 
+Pass the run's `jiraSite` from `context.json` as `cloudId` in every Jira call. Never try another site; if Jira refuses it, set the task to `blocked` with the exact error.
+
 Request only the fields you need: summary, description, status, issuetype, parent, fixVersions, labels, resolution. Open each issue with the issue tool for the description and comments when the search result is not enough.
 
 ## Write one fact sheet per story

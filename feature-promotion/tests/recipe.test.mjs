@@ -58,6 +58,19 @@ test('every template named by the artifact skill and the phase catalog exists', 
   }
 });
 
+test('the run context names the Jira site, and every worker task that reads Jira passes it on', () => {
+  const schema = JSON.parse(read('skills/feature-promotion/assets/contracts/context.schema.json'));
+  const context = JSON.parse(read('skills/feature-promotion/assets/profiles/changelog/context.json'));
+  assert.ok(schema.required.includes('jiraSite'));
+  assert.match(context.jiraSite, new RegExp(schema.properties.jiraSite.pattern));
+  for (const file of readdirSync(resolve(root, 'skills/promotion-artifact/templates'))) {
+    const content = read(`skills/promotion-artifact/templates/${file}`);
+    const owner = content.match(/Owner: ([a-z-]+)\./)[1];
+    const readsJira = inlineList(read(`agents/${owner}.md`), 'tools').some(tool => tool.startsWith('jira/'));
+    if (owner !== 'orchestrator' && readsJira) assert.ok(content.includes('`jiraSite`'), file);
+  }
+});
+
 test('every agent uses only skills and connectors the recipe ships, and loads task lifecycle guidance', () => {
   assert.deepEqual(agents.filter(name => /^isDefault: true$/m.test(read(`agents/${name}.md`))), ['orchestrator']);
   for (const name of agents) {

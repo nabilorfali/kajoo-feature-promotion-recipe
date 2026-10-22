@@ -7,7 +7,7 @@ description: Use when running, resuming or checking a feature promotion run that
 
 Use the shared `workflow` contract for phases, tasks and dependencies. This skill adds the promotion phases, the approval gates, the run state and the evidence rules. It does not write copy; `channel-copy` owns wording and `readme-changelog` owns every call to ReadMe.
 
-[Filesystem scripts](scripts/README.md) check approvals against file hashes, turn the approved shortlist into tasks, and validate worker results. Every agent reads the run's `context.json` first. Contracts are in [assets/contracts](assets/contracts/README.md).
+[Filesystem scripts](scripts/README.md) check approvals against file hashes, turn the approved shortlist into tasks, and validate worker results. Every agent reads the run's `context.json` first. Every Jira call passes its `jiraSite` as `cloudId`; never guess, look up or try another site, and if Jira refuses it, stop and report the exact error. Contracts are in [assets/contracts](assets/contracts/README.md).
 
 ## Start and resume
 

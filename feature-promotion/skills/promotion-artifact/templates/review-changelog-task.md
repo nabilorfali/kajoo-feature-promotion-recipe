@@ -7,7 +7,7 @@ Workflow task: `review.changelog.<entry>`. Owner: reviewer. Depends on `draft.ch
 ## Inputs
 
 - `drafts/<entry>/changelog.md`.
-- The Jira tickets in its `stories` header, opened again.
+- The Jira tickets in its `stories` header, opened again on the run's `jiraSite` from `context.json`, passed as `cloudId`.
 
 ## Output
 

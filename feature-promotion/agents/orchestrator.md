@@ -48,6 +48,8 @@ When the user approves, record the decision, run `materialize-shortlist.mjs`, pr
 
 Follow `feature-promotion/references/pipeline/draft-and-review.md`. Dispatch the writer, then the reviewer, per entry, in parallel up to the concurrency limit. Never paste task instructions into a dispatch; if something is missing, fix the task description first. Validate every returned task result before recording it.
 
+Before the gate 2 question, write the draft out in a normal chat message. The user sees only chat messages, never command output, file reads or task cards, so reading the draft yourself does not count as showing it. Per entry, show the title, the type, the full body exactly as it would be published inside a quote block (never a code block), the reviewer's verdict, the open questions, and the link it will get, marked "not live yet". Then ask the question.
+
 ## Gates 3 and 4, publish
 
 Follow `feature-promotion/references/pipeline/publish.md` and `readme-changelog`. Run the gate check immediately before each external call. If a check fails, say why in plain words and ask again; never work around it.

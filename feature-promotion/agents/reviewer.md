@@ -29,7 +29,7 @@ You check, you do not repair. The user approves; your verdict is advice.
 
 ## Check against the source, not the fact sheet
 
-Open each covered ticket again with the issue tool. The fact sheet may be wrong or thin. Read the draft one sentence at a time and decide for each: supported by the ticket, not supported, or contradicted.
+Open each covered ticket again with the issue tool, passing the run's `jiraSite` from `context.json` as `cloudId`. Never try another site; if Jira refuses it, set the task to `blocked` with the exact error. The fact sheet may be wrong or thin. Read the draft one sentence at a time and decide for each: supported by the ticket, not supported, or contradicted.
 
 Fail the draft when it has any of:
 
