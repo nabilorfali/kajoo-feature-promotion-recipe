@@ -22,7 +22,7 @@ Workflow task: `publish.hidden.<entry>`. Owner: orchestrator. Depends on `review
 
 ## Lifecycle and handoff
 
-Follow `readme-changelog` exactly. Show the user the link. Making it public is the next task and needs its own approval.
+Follow `readme-changelog` exactly. Show the user the link. Making it public is the next task and needs its own approval. Mark the task done only when the read-back is hidden and equals the draft. If the user pauses at gate 3, record a `pause` decision and set this step to `blocked` in `workflow.json` and on the Kajoo task, with "Waiting for the user's OK to create the hidden entry" in the Technical report.
 
 ## Technical report
 

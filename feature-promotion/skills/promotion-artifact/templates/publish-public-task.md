@@ -20,7 +20,7 @@ Workflow task: `publish.public.<entry>`. Owner: orchestrator. Depends on `publis
 
 ## Lifecycle and handoff
 
-If the user keeps it hidden, mark the task done with that choice in the Technical report. Never delete or edit a public entry.
+Mark the task done only when the read-back shows the entry public. If the user keeps it hidden, record a `pause` decision and set this step to `blocked` in `workflow.json` and on the Kajoo task, with "Waiting for the user's OK to make it public" in the Technical report; the run stays paused and gate 4 is asked again when the user returns. Only when the user says the entry should stay hidden for good, mark the step `skipped` with their words. Never delete or edit a public entry.
 
 ## Technical report
 

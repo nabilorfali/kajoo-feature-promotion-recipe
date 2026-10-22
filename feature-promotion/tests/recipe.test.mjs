@@ -71,6 +71,14 @@ test('the run context names the Jira site, and every worker task that reads Jira
   }
 });
 
+test('a paused publish step stays blocked, and is done only after the read-back', () => {
+  for (const file of ['publish-hidden-task.md', 'publish-public-task.md']) {
+    const lifecycle = read(`skills/promotion-artifact/templates/${file}`).split('## Lifecycle and handoff')[1].split('## Technical report')[0];
+    assert.match(lifecycle, /Mark the task done only when the read-back/, file);
+    assert.match(lifecycle, /record a `pause` decision and set this step to `blocked`/, file);
+  }
+});
+
 test('every agent uses only skills and connectors the recipe ships, and loads task lifecycle guidance', () => {
   assert.deepEqual(agents.filter(name => /^isDefault: true$/m.test(read(`agents/${name}.md`))), ['orchestrator']);
   for (const name of agents) {
