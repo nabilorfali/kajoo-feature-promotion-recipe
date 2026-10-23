@@ -37,7 +37,7 @@ After a worker returns, validate its result with `validate-task-result.mjs`, che
 
 ## Gates
 
-Four publishing gates and two demo gates, all `ask-user-input` questions answered by the user, each recorded as a decision tied to the hashes of the files it covers. See [decisions and approvals](references/decisions-and-approvals.md). Nothing is created or changed outside the run folder until `check-decisions.mjs` reports the matching decision as current and approving. An edit to a covered file makes its approval stale; ask again.
+Four publishing gates and two demo gates, all `ask-user-input` questions answered by the user, each recorded as a decision tied to the hashes of the files it covers. See [decisions and approvals](references/decisions-and-approvals.md). The demo clip gate plays both clips in the chat with `kajoo/show-videos` right before its question, and the clips must still match what was played when the answer arrives; see [demo](references/pipeline/demo.md). Nothing is created or changed outside the run folder until `check-decisions.mjs` reports the matching decision as current and approving. An edit to a covered file makes its approval stale; ask again.
 
 A phase completion is never permission to start the next gate's action. Technical success, a passing review or a clean script run is never approval.
 
