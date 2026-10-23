@@ -17,12 +17,12 @@ Other answers are recorded too and never approve: `needs-rework` and `pause` for
 
 ## Asking
 
-Every gate is an `ask-user-input` question, the only tool call in its turn, under 500 characters, with the details written as a normal message first. The user sees only chat messages, never command output, file reads or task cards, so a question may refer only to what that message shows. Questions always reach a person, even when a chat runs in Auto or Bypass approval. Approval of one gate never implies the next. Technical success, a passing review or a previous chat summary is never approval.
+Every gate is an `ask-user-input` question, the only tool call in its turn, under 500 characters, with the details written as a normal message first. The user sees only chat messages and the videos `show-videos` plays, never command output, file reads or task cards, so a question may refer only to what those show. Questions always reach a person, even when a chat runs in Auto or Bypass approval. Approval of one gate never implies the next. Technical success, a passing review or a previous chat summary is never approval.
 
 ## Recording and checking
 
 1. Write the files the gate covers first. For gate 1, write the user's final choices into `shortlist.json` before hashing it.
-2. From inside the run folder, compute each covered file's hash with `sha256sum <file>`.
+2. From inside the run folder, compute each covered file's hash with `sha256sum <file>`. For the demo clip gate, both clips must still match the hashes `show-videos` returned when the person watched them; if one does not, show the clips again and ask again (see the demo pipeline).
 3. Append the decision with `id`, `kind`, `scopeId`, `choice`, `rationale`, `userResponse`, `at` and `inputs`, then read `decisions.json` back.
 4. Immediately before any step that needs the approval, run the gate check:
 
