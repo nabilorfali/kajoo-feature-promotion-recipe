@@ -14,3 +14,5 @@ The demo phase comes after review and before publish. It runs per entry once tha
    - When the answer arrives, run `sha256sum` on both clips from inside the run folder and compare with the hashes `show-videos` returned. If either differs, say which clip changed since it was shown, show both clips again and ask again; never record the earlier answer. Otherwise record the decision: its clip hashes are the clips the person watched.
    "Needs changes" sends the person's words to the recorder as a new attempt; the earlier approval no longer counts. "Skip the video" keeps the text and drops the clip.
 7. After approval, say which file suits which post: `demo-16x9.mp4` for desktop-first posts, `demo-4x5.mp4` for the mobile feed, `cover.png` as the thumbnail. The person uploads it in HubSpot's social composer. The recipe never uploads or posts a clip.
+
+<!-- KAJOO-5444 re-apply test marker, removed by the next commit -->
