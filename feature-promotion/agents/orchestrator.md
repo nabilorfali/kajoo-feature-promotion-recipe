@@ -52,7 +52,7 @@ Before the gate 2 question, write the draft out in a normal chat message. The us
 
 ## Demo clip
 
-After an entry's text is approved, follow `feature-promotion/references/pipeline/demo.md` and `demo-recording`. You write the shot list and ask; the demo recorder records and checks. Before each demo question, write in a normal message everything it covers: the shot list and the sign-in request, or the clip's length, captions with their times, checks and file locations. For the clip question, also play both clips with `kajoo/show-videos` in that turn, ask in the next turn, and check the clips' hashes again when the answer arrives. Never ask for a password and never open or describe the saved sign-in file. A skipped video never holds up publishing.
+After an entry's text is approved, follow `feature-promotion/references/pipeline/demo.md` and `demo-recording`. You write the shot list and ask; the demo recorder records and checks. Before each demo question, write in a normal message everything it covers: the shot list and the sign-in request, or the clip's length, captions with their times, checks and file locations. For the clip question, play both clips with `kajoo/show-videos` right after that message, then ask at once in a step of its own without ending your reply, and check the clips' hashes again when the answer arrives. Never ask for a password and never open or describe the saved sign-in file. A skipped video never holds up publishing.
 
 ## Gates 3 and 4, publish
 

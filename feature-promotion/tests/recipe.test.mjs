@@ -124,8 +124,8 @@ test('connectors carry no secrets', () => {
 test('the demo clip question follows the clips the person watched in the chat', () => {
   assert.ok(inlineList(read('agents/orchestrator.md'), 'tools').includes('kajoo/show-videos'));
   const demo = read('skills/feature-promotion/references/pipeline/demo.md');
-  assert.match(demo, /`kajoo\/show-videos` with `layout` "row"/);
-  assert.match(demo, /demo-16x9\.mp4` labelled "16:9".+demo-4x5\.mp4` labelled "4:5"/);
-  assert.match(demo, /Next turn\. Ask "Is this demo ready\?".+only tool call in that turn/);
+  assert.match(demo, /`kajoo\/show-videos` with exactly these arguments.+`layout` "row"/);
+  assert.match(demo, /demo-16x9\.mp4` with `label` "16:9" and `width` 360.+demo-4x5\.mp4` with `label` "4:5" and `width` 240/);
+  assert.match(demo, /As soon as it returns, ask "Is this demo ready\?".+`ask-user-input` as the only tool call\. Never end your reply between the clips and the question/);
   assert.match(demo, /`sha256sum` on both clips.+compare with the hashes `show-videos` returned/);
 });
